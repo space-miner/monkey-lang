@@ -26,11 +26,12 @@ class Token:
 
 
 keywords = {
-  'fn': FUNCTION,
-  'let': LET,
+    'fn': FUNCTION,
+    'let': LET,
 }
 
+
 def lookup_identifier(ident):
-  if ident in keywords:
-    return keywords[ident]
-  return IDENT
+    if ident in keywords:
+        return keywords[ident]
+    return IDENT

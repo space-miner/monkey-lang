@@ -30,6 +30,10 @@ class Lexer:
                 lit = l.read_identifier()
                 typ = token.lookup_identifier(lit)
                 tok = new_token(typ, lit)
+            elif is_digit(l.ch):
+                lit = l.read_number()
+                typ = token.INT
+                tok = new_token(typ, lit)
             else:
                 tok = new_token(token.ILLEGAL, l.ch)
         l.read_char()
@@ -50,6 +54,10 @@ class Lexer:
         while is_letter(l.ch):
             l.read_char()
         return l.inp[pos:l.pos]
+
+
+def is_digit(ch):
+    return '0' <= ch <= '9'
 
 
 def is_letter(ch):
