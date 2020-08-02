@@ -27,7 +27,7 @@ class Lexer:
             tok = new_token(token.LBRACE, l.ch)
         elif l.ch == '}':
             tok = new_token(token.RBRACE, l.ch)
-        elif l.ch == '0':
+        elif l.ch == 0:
             tok = new_token(token.EOF, '')
         else:
             if is_letter(l.ch):
