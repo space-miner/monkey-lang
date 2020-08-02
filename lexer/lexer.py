@@ -5,6 +5,29 @@ class Lexer:
     self.rpos = rpos
     self.ch = ch
 
+  def next_token(self):
+    l = self
+    if l.ch == '=':
+      tok = new_token(token.ASSIGN, l.ch)
+    elif l.ch == ';':
+      tok = new_token(token.SEMICOLON, l.ch)
+    elif l.ch == '(':
+      tok = new_token(token.LPAREN, l.ch)
+    elif l.ch == ')':
+      tok = new_token(token.RPAREN, l.ch)
+    elif l.ch == ',':
+      tok = new_token(token.COMMA, l.ch)
+    elif l.ch == '+':
+      tok = new_token(token.PLUS, l.ch)
+    elif l.ch == '{':
+      tok = new_token(token.LBRACE, l.ch)
+    elif l.ch == '}':
+      tok = new_token(token.RBRACE, l.ch)
+    elif l.ch == '0':
+      tok = new_token(token.EOF, '')
+    l.read_char()
+    return tok
+
   def read_char(self):
     l = self
     if l.rpos >= len(l.inp):
@@ -18,3 +41,6 @@ def new(inp):
   l = Lexer(inp)
   l.read_char()
   return l
+
+def new_token(typ, ch):
+  return token.Token(typ, ch)
