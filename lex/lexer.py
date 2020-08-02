@@ -10,6 +10,7 @@ class Lexer:
 
     def next_token(self):
         l = self
+        l.skip_whitespace()
         if l.ch == '=':
             tok = new_token(token.ASSIGN, l.ch)
         elif l.ch == ';':
@@ -33,14 +34,16 @@ class Lexer:
                 lit = l.read_identifier()
                 typ = token.lookup_identifier(lit)
                 tok = new_token(typ, lit)
+                return tok
             elif is_digit(l.ch):
                 lit = l.read_number()
                 typ = token.INT
                 tok = new_token(typ, lit)
+                return tok
             else:
                 tok = new_token(token.ILLEGAL, l.ch)
+                return tok
         l.read_char()
-        print(tok.typ, tok.lit)
         return tok
 
     def read_char(self):
@@ -65,6 +68,11 @@ class Lexer:
         while l.ch != 0 and is_digit(l.ch):
           l.read_char()
         return l.inp[pos:l.pos]
+
+    def skip_whitespace(self):
+        l = self
+        while l.ch in [' ', '\t', '\n', '\r']:
+          l.read_char()
 
 
 def is_digit(ch):

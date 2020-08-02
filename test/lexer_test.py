@@ -9,13 +9,14 @@ from lex import lexer
 
 class LexerTest(unittest.TestCase):
     def setUp(self):
-        self.inp = '''let five = 5;
-                   let ten = 10;
-                   let add = fn(x, y) {
-                     x + y;
-                   };
-                   let result = add(five, ten);
-                   '''
+        self.inp = '''
+            let five = 5;
+            let ten = 10;
+            let add = fn(x, y) {
+                x + y;
+            };
+            let result = add(five, ten);
+            '''
         self.l = lexer.new(self.inp)
 
     def test_next_token(self):
