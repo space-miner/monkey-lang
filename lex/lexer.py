@@ -3,10 +3,10 @@ from tok import token
 
 class Lexer:
     def __init__(self, inp='', pos=0, rpos=0, ch=''):
-        self.inp = inp
-        self.pos = pos
-        self.rpos = rpos
-        self.ch = ch
+        self.inp = inp    # input
+        self.pos = pos    # position
+        self.rpos = rpos  # read position
+        self.ch = ch      # character
 
     def next_token(self):
         l = self

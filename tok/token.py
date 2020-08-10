@@ -21,8 +21,8 @@ LET = "LET"
 
 class Token:
     def __init__(self, typ='', lit=''):
-        self.typ = typ
-        self.lit = lit
+        self.typ = typ  # type
+        self.lit = lit  # literal
 
 
 keywords = {
@@ -31,7 +31,7 @@ keywords = {
 }
 
 
-def lookup_identifier(ident):
+def lookup_identifier(ident): 
     if ident in keywords:
         return keywords[ident]
     return IDENT

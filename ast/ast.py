@@ -14,7 +14,7 @@ class Expression(Node):
 
 class Program(Node):
     def __init__(self, prog=[])
-        self.prog = prog
+        self.prog = prog  # program
 
     def token_literal(self):
         p = self
@@ -26,9 +26,9 @@ class Program(Node):
 
 class LetStatement(Statement):
     def __init__(self, tok=None, name=None, val=None):
-        self.tok = tok
-        self.name = name
-        self.val = val
+        self.tok = tok    # token
+        self.name = name  # variable name
+        self.val = val    # value
 
     def token_literal(self):
         ls = self
@@ -37,11 +37,9 @@ class LetStatement(Statement):
 
 class Identifier(Expression):
     def __init__(self, tok=None, val=None):
-        self.tok = tok
-        self.val = val
+        self.tok = tok  # token
+        self.val = val  # value
 
     def token_literal(self):
         i = self
         return i.tok.lit
-
-
